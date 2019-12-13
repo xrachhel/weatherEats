@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Eats</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/bulma.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+    <section class="hero has-background-danger">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-size-1 has-text-white">Weather Eats <span class="icon"><i class="fas fa-stroopwafel"></i></span></h1>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="container">
+        <div class="box" id="weather-content">
+            <p class="has-text-centered is-size-2">Today's Weather</p>
+        </div>
+    </section>
+    <br>
+    <section class="container box has-background-danger has-text-white">
+        <h2 class="has-text-centered has-text-weight-bold is-size-3">Choose Your Filters</h2>
+        <br>
+        <div class="columns">
+            <div class="column is-2 is-offset-3">
+                <input id="family" type="checkbox">
+                <label for="family" class="checkbox is-size-4 has has-text-centered">
+                    Family
+                </label>
+            </div>
+            <div class="column is-2">
+                <input id="budget" type="checkbox">
+                <label for="budget" class="checkbox is-size-4 has has-text-centered">
+                    Budget
+                </label>
+            </div>
+            <div class="column is-2">
+                <input id="business" type="checkbox">
+                <label for="business" class="checkbox is-size-4 has has-text-centered">
+                    Business
+                </label>
+            </div>
+        </div>
+    </section>
+    <br>
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            <button class="button has-background-link has-text-white has-text-weight-bold is-large is-fullwidth is-size-1">Find Restaurants</button>
+        </div>
+    </div>
+
+
+</body>
+</html>
