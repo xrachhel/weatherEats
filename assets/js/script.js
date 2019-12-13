@@ -21,6 +21,7 @@ function renderWeather(){
                 method: "GET"
             }).then(function(response){
                 console.log(queryURL);
+                console.log(response)
                 var cityName = $("<p>");
                 cityName.addClass("is-size-2")
                 cityName.text(response.name);
@@ -42,6 +43,31 @@ function renderWeather(){
                 var windSpeed = $("<p>");
                 windSpeed.text("Wind Speed: " + response.wind.speed);
                 weatherContent.append(windSpeed);
+
+
+//----------------------------------------YELP API-----------------------------------------------
+                jQuery.ajaxPrefilter(function (options) {
+                    if (options.crossDomain && jQuery.support.cors) {
+                        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+                    }
+                });
+                $("#restaurants").on("click", function(){
+                    event.preventDefault()
+                    var main = response.weather[0].main
+                    var city = response.name
+                    console.log(main)
+                    console.log(city)
+
+                    $.ajax({
+                        url: 'https://api.yelp.com/v3/businesses/search?&location=' + city + '',
+                        method: "GET",
+                        headers: {
+                            authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"}
+                    }).then(function(response){
+                        console.log(response)
+                    })
+                    
+                })
 
             });
         });
