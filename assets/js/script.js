@@ -55,11 +55,17 @@ function renderWeather(){
                     event.preventDefault()
                     var main = response.weather[0].main
                     var city = response.name
+                    var type;
                     console.log(main)
                     console.log(city)
 
+                    if(main === "Clouds"){
+                        type = "soup"
+                        
+                    }
+
                     $.ajax({
-                        url: 'https://api.yelp.com/v3/businesses/search?&location=' + city + '',
+                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&location=' + city + '',
                         method: "GET",
                         headers: {
                             authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"}
