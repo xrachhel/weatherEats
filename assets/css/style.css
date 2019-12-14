@@ -18,3 +18,45 @@ body{
     background-size: cover;
     min-height: 100%;
 }
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .grid {
+    text-align: center;
+    max-width: 95vw;
+    margin: 2.5vw auto;
+  }
+
+  .grid-item {
+    padding: 5px;
+    box-sizing: border-box;
+      display:inline;
+  }
+
+  @media screen and (min-width: 500px) {
+    .grid-item {
+      width: 50%;
+    }
+  }
+  
+  @media screen and (min-width: 1000px) {
+    .grid-item {
+      width: 33.333%;
+    }
+  }
+  
+  @media screen and (min-width: 1700px) {
+    .grid-item {
+      width: 25%;
+    }
+  }
+  
+  @media screen and (min-width: 2100px) {
+    .grid-item {
+      width: 20%;
+    }
+  }

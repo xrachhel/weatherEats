@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Restaurants</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/bulma.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body id="body">
+    <section class="hero has-background-danger">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-size-1 has-text-white">Weather Eats <span class="icon"><i class="fas fa-stroopwafel"></i></span></h1>
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <div class="grid"></div>
+
+<script src="assets/js/jQuery3.4.1.js"></script>
+<script src="assets/js/masonry.pkgd.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script>
+    $("#body").attr("style","background-image: none");
+    var grid = $(".grid");
+
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=puppies&limit=20&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      console.log(response);
+      var grid = $(".grid");
+
+      var gifs = response.data
+      for (var i =0; i < gifs.length; i++){
+        var gridItem = $("<div>");
+        gridItem.addClass("grid-item");
+        grid.append(gridItem);
+
+        var image = $("<img>");
+        image.attr("src", gifs[i].images.original.url)
+        gridItem.append(image);
+        
+
+        console.log(gifs[i].images.original.url);
+      }
+    });
+    
+
+    grid.imagesLoaded(function() {
+        grid.masonry({
+        itemSelector: ".grid-item"
+        });
+    });
+</script>
+</body>
+</html>
