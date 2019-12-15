@@ -6,20 +6,20 @@ var weatherContent = $("#weather-content");
 //   });
 
 
-function renderWeather(){
+function renderWeather() {
 
     if (navigator.geolocation) {
-        
-        navigator.geolocation.getCurrentPosition(function(position){
+
+        navigator.geolocation.getCurrentPosition(function (position) {
 
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude
-     
-            var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat="+ latitude +"&lon="+ longitude +"&units=imperial&appid=2cf011e0ff0bddcd3b775b324d2a19d4";
+
+            var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=2cf011e0ff0bddcd3b775b324d2a19d4";
             $.ajax({
                 url: queryURL,
                 method: "GET"
-            }).then(function(response){
+            }).then(function (response) {
                 console.log(queryURL);
                 console.log(response)
                 var cityName = $("<p>");
@@ -29,7 +29,7 @@ function renderWeather(){
 
                 var weatherImg = $("<img>");
                 weatherImg.addClass("");
-                weatherImg.attr("src", "http://openweathermap.org/img/wn/"+response.weather[0].icon +"@2x.png");
+                weatherImg.attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
                 weatherContent.append(weatherImg);
 
                 var temperature = $("<p>");
@@ -45,41 +45,75 @@ function renderWeather(){
                 weatherContent.append(windSpeed);
 
 
-//----------------------------------------YELP API-----------------------------------------------
+                //----------------------------------------YELP API-----------------------------------------------
+                $("#family").on("click", function(){
+                    if ($(this).is(':checked')){
+                        price = "1,2,3,4"
+                    }
+                })
+                $("#budget").on("click", function(){
+                    if($(this).is(':checked')){
+                        price = "1,2"
+                    }
+                })
+                $("#business").on("click", function(){
+                    if ($(this).is(':checked')){
+                        price = "2,3,4"
+                    }
+                })
+
+
+
                 jQuery.ajaxPrefilter(function (options) {
                     if (options.crossDomain && jQuery.support.cors) {
                         options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
                     }
                 });
-                $("#restaurants").on("click", function(){
+                $("#restaurants").on("click", function () {
                     event.preventDefault()
                     var main = response.weather[0].main
-                    var city = response.name
+                    var lat = response.coord.lat
+                    var lon = response.coord.lon
                     var type;
                     console.log(main)
-                    console.log(city)
+                    console.log(lat)
+                    console.log(lon)
 
-                    if(main === "Clouds"){
+                    if (main === "Clouds" || main === "Rain") {
                         type = "soup"
-                        
+                    }
+                    else if (main === "Thunderstorm") {
+                        type = "takeout"
+                    }
+                    else if (main === "Clear") {
+                        type = "patio"
                     }
 
+                    
+                    
+                    console.log(price)
+                    
+
                     $.ajax({
-                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&location=' + city + '',
+                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + price + '&open_now=true&radius=10000',
                         method: "GET",
                         headers: {
-                            authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"}
-                    }).then(function(response){
+                            authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
+                        }
+                    }).then(function (response) {
                         console.log(response)
                     })
-                    
+
                 })
 
             });
         });
-    } else { 
+    } else {
         alert("Geolocation is not supported by this browser.");
     }
 }
 
 renderWeather();
+
+
+
