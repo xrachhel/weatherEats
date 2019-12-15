@@ -58,11 +58,11 @@ function renderWeather() {
                 })
                 $("#business").on("click", function(){
                     if ($(this).is(':checked')){
-                        price = "2,3,4"
+                        price = "2,3,4 "
                     }
                 })
 
-
+               
 
                 jQuery.ajaxPrefilter(function (options) {
                     if (options.crossDomain && jQuery.support.cors) {
@@ -76,8 +76,7 @@ function renderWeather() {
                     var lon = response.coord.lon
                     var type;
                     console.log(main)
-                    console.log(lat)
-                    console.log(lon)
+                   
 
                     if (main === "Clouds" || main === "Rain") {
                         type = "soup"
