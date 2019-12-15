@@ -25,6 +25,7 @@
 <script src="assets/js/jQuery3.4.1.js"></script>
 <script src="assets/js/masonry.pkgd.js"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="js/AnimOnScroll.js"></script>
 <script>
     $("#body").attr("style","background-image: none");
     var grid = $(".grid");
@@ -46,6 +47,7 @@
 
         var image = $("<img>");
         image.attr("src", gifs[i].images.original.url)
+        image.attr("style", "height: 200px; width: 200px")
         gridItem.append(image);
         
 
@@ -53,7 +55,7 @@
       }
     });
     
-
+    
     grid.imagesLoaded(function() {
         grid.masonry({
         itemSelector: ".grid-item"

@@ -32,9 +32,9 @@ body{
   }
 
   .grid-item {
-    padding: 5px;
+    padding: 10px;
     box-sizing: border-box;
-      display:inline;
+    display:inline;
   }
 
   @media screen and (min-width: 500px) {
