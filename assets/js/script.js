@@ -117,41 +117,8 @@ function renderWeather() {
                         // Will need another API call for the the business hours
                         // https://www.yelp.com/developers/documentation/v3/business
 
-                        // add the header + div
-                        $("#the-body").append(
-                            `<section class="hero has-background-danger">
-                            <div class="hero-body">
-                                <div class="container has-text-centered">
-                                    <h1 class="title is-size-1 has-text-white">Weather Eats <span class="icon"><i class="fas fa-stroopwafel"></i></span></h1>
-                                </div>
-                            </div>
-                        </section>
-                        <br>
-                        <section class="columns">
-                            <div class="column is-8 is-offset-2 box" id="weather-content">
-                            <img id="business-image" src="${response.businesses[0].image_url}"/>                        
-                            <p>Cuisine: ${response.businesses[0].categories[0].title}</p>
-                            <p>Price: ${response.businesses[0].price}</p>
-                            <p>Rating: ${response.businesses[0].rating}/5</p>
-                            <p>Location: ${response.businesses[0].location.address1}, 
-                            ${response.businesses[0].location.city}, 
-                            ${response.businesses[0].location.state} 
-                            ${response.businesses[0].location.zip_code}</p>
-                            <p>Phone number: ${response.businesses[0].display_phone}</p>
-                            <br>
-                            <p>Hours</p>
-                            <p>Monday: XXX</p>
-                            <p>Tuesday: XXX</p>
-                            <p>Wednesday: XXX</p>
-                            <p>Thursday: XXX</p>
-                            <p>Friday: XXX</p>
-                            <p>Saturday: XXX</p>
-                            <p>Sunday: XXX</p>
-                            <div id="googleMap" ></div>
-                            </div>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1vAB6ebgaBoaJKNAgmnFeVICug9Ls8fo&callback=myMap"></script>
-                        </section>`           
-                        );
+                        fill_div(response);
+                        
 
                     })
 
@@ -165,6 +132,46 @@ function renderWeather() {
 }
 
 renderWeather();
+
+function fill_div(response){
+
+    // add the header + div
+    $("#the-body").append(
+        `<section class="hero has-background-danger">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-size-1 has-text-white">Weather Eats <span class="icon"><i class="fas fa-stroopwafel"></i></span></h1>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="columns">
+        <div class="column is-8 is-offset-2 box" id="weather-content">
+        <img id="business-image" src="${response.businesses[0].image_url}"/>                        
+        <p>Cuisine: ${response.businesses[0].categories[0].title}</p>
+        <p>Price: ${response.businesses[0].price}</p>
+        <p>Rating: ${response.businesses[0].rating}/5</p>
+        <p>Location: ${response.businesses[0].location.address1}, 
+        ${response.businesses[0].location.city}, 
+        ${response.businesses[0].location.state} 
+        ${response.businesses[0].location.zip_code}</p>
+        <p>Phone number: ${response.businesses[0].display_phone}</p>
+        <br>
+        <p>Hours</p>
+        <p>Monday: XXX</p>
+        <p>Tuesday: XXX</p>
+        <p>Wednesday: XXX</p>
+        <p>Thursday: XXX</p>
+        <p>Friday: XXX</p>
+        <p>Saturday: XXX</p>
+        <p>Sunday: XXX</p>
+        <div id="googleMap" ></div>
+        </div>
+        <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1vAB6ebgaBoaJKNAgmnFeVICug9Ls8fo&callback=myMap"></script>
+    </section>`           
+    );
+
+}
 function myMap() {
     var mapProp= {
       center:new google.maps.LatLng(lat,lon),
