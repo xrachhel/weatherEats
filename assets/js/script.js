@@ -144,8 +144,56 @@ function renderWeather() {
                                 var address = result.businesses[0].location.display_address[0]
                                 var address2 = result.businesses[0].location.display_address[1]
                                 var phone = result.businesses[0].display_phone
+                                // var sunday = response.hours[0].open[0].start
+                                // var sunday1 = response.hours[0].open[0].end
                                 for(var i = 0; i < response.hours[0].open.length; i++){
-                                    var hours = response.hours[0].open[i].start
+                                    // var hours = response.hours[0].open[i].start
+                                    // var hourDiv = $("<div>" + hours + "</div>")
+                                    // $("#hours").append(hourDiv)
+                                    // $("#hours").text("Hours: " + hours)
+                                    // console.log(hours)
+                                    var day = response.hours[0].open[i].day
+                                    console.log(day)
+                                    var dayWeek;
+                                    if ( day === 0){
+                                        dayWeek = "Sunday"
+                                    }
+                                    else if( day === 1){
+                                        dayWeek = "Monday"
+                                    }
+                                    else if (day === 2){
+                                        dayWeek = "Tuesday"
+                                    }
+                                    else if (day === 3){
+                                        dayWeek = "Wednesday"
+                                    }
+                                    else if (day === 4){
+                                        dayWeek = "Thursday"
+                                    }
+                                    else if (day === 5){
+                                        dayWeek = "Friday"
+                                    }
+                                    else if (day === 6){
+                                        dayWeek = "Saturday"
+                                    }
+                                    if(response.hours[0].open[i] === response.hours[0].open[i+1]){
+                                        var start = response.hours[0].open[i].start
+                                        var end = response.hours[0].open[i].end
+                                        var start1 = response.hours[0].open[i+1].start
+                                        var end1 = response.hours[0].open[i+1].start
+                                        var hourDiv = $("<div>" + dayWeek +": " + start + "-" + end + "</div>")
+                                        var hoursDiv = $("<div>" + start1 + "-" + end1 + "</div" )
+                                        console.log(start,end,start1,end1)
+                                        $("#hours").append(hourDiv, hoursDiv)
+                                    }
+                                    else{
+                                        var start = response.hours[0].open[i].start
+                                        var end = response.hours[0].open[i].end
+                                        var hourDiv = $("<div>" +dayWeek + ": " + start + "-" + end + "</div>")
+                                        $("#hours").append(hourDiv)
+                                        console.log(start,end)
+                                    }
+                            
                                 }
                                 
 
@@ -153,15 +201,18 @@ function renderWeather() {
                                 console.log(restName)
                                 // $("#cuisine").text(response[0].categories[0].alias)
                                 // console.log(response.categories[0].alias)
-                                $("#price").text("Price: " + prices)
+                                $("#price").html("<strong>Price: </strong>" + prices)
                                 console.log(prices)
-                                $("#rating").text("Rating: " + ratings + "/5")
+                                $("#rating").html("<strong>Rating: </strong>" + ratings + "/5")
                                 console.log(ratings)
-                                $("#location").text("Address: " + address + ", " +  address2)
+                                $("#location").html("<strong>Address: </strong>" + address + ", " +  address2)
                                 console.log(address + address2)
-                                $("#phone").text("Phone no.: " + phone)
+                                $("#phone").html("<strong>Phone no.: </strong>" + phone)
                                 console.log(phone)
-                                $("#hours").text("Hours: " + hours)
+                                // var sundayDiv = $("<div>" + sunday + "- " + sunday1 + "</div>")
+                                // $("#hours").append(sundayDiv)
+                                // console.log(sunday + sunday1)
+                                
                             })
                         }
                         
