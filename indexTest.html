@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./assets/css/styleTest.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
-<body>
+<body id="body">
     <section class="hero has-background-danger">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -24,7 +24,7 @@
         </div>
     </section>
     <br>
-    <section class="container box has-background-danger has-text-white">
+    <section class="container box has-background-danger has-text-white" id="filter-div">
         <h2 class="has-text-centered has-text-weight-bold is-size-3">Choose Your Filters</h2>
         <br>
         <div class="columns">
@@ -49,10 +49,13 @@
         </div>
     </section>
     <br>
-    <div class="columns">
+    <div class="columns" id="find-restaurants-div">
         <div class="column is-6 is-offset-3">
             <button id = "restaurants" class="button has-background-white has-text-danger has-text-weight-bold is-large is-fullwidth is-size-1">Find Restaurants</button>
         </div>
+    </div>
+    <div class="grid">
+        <div class="grid-sizer"></div>
     </div>
     <div class="container" id="app">
             <div class="modal">
@@ -82,6 +85,8 @@
           </div>
 
     <script src="assets/js/jQuery3.4.1.js"></script>
+    <script src="assets/js/packery.pkgd.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

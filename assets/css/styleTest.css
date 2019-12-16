@@ -22,3 +22,27 @@ body{
     background-color: white;
     padding: 30px;
 }
+
+html { overflow-y: scroll; }
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 33.3%;
+}
+
+.grid-item {
+  float: left;
+  height: 250px;
+  padding: 4px;
+}
+
+ .restaurant-img{
+    width: 100%;
+    height: 100%;
+}

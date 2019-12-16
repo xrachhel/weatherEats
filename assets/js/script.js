@@ -83,6 +83,10 @@ function renderWeather() {
                 });
                 $("#restaurants").on("click", function () {
                     event.preventDefault()
+                    $("#body").attr("style","background-image: none");
+                    $("#find-restaurants-div").attr("style", "display: none");
+                    $("#filter-div").attr("style","display: none");
+
                     var main = response.weather[0].main
                     var lat = response.coord.lat
                     var lon = response.coord.lon
@@ -119,13 +123,15 @@ function renderWeather() {
                     console.log(category)
 
                     $.ajax({
-                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + price + '&open_now=true&categories=' + category + '&radius=10000&limit=1',
+                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + price + '&open_now=true&categories=' + category + '&radius=10000&limit=10',
                         method: "GET",
                         headers: {
                             authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
                         }
                     }).then(function (result) {
                         console.log(result)
+                        runPackery(result.businesses);
+
                         for (var i = 0; i < result.businesses.length; i ++){
                             var id = result.businesses[i].id
                             console.log(id)
@@ -249,8 +255,34 @@ function renderWeather() {
     }
 }
 
-renderWeather();
+function runPackery(arr){
+    var grid = $(".grid");
+    for(var i = 0; i < arr.length; i++){
+        var gridItem = $("<div>");
+        gridItem.addClass("grid-item");
+        grid.append(gridItem);
 
+        var image = $("<img>");
+        image.attr("src", arr[i].image_url)
+        image.addClass("restaurant-img");
+        gridItem.append(image);
+        var testDiv = $("<p>");
+        testDiv.text("fkljsdlfkjsdlkfjalfsdflskjdf");
+        grid.append(testDiv);
+    }
+
+    var $grid =     $('.grid').packery({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
+
+    $grid.imagesLoaded().progress( function() {
+    $grid.packery();
+});
+}
+
+renderWeather();
 
 
 $("#showModal").click(function() {
