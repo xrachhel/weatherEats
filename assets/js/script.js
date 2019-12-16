@@ -107,17 +107,20 @@ function renderWeather() {
                         }
                     }).then(function (response) {
                         console.log(response);
-
+                        localStorage.setItem("businessData", response);
+                        localStorage.setItem("lat", response.businesses[0].coordinates.latitude);
+                        localStorage.setItem("lon", response.businesses[0].coordinates.longitude);
+                        saveData(response);
                         // inspect the api call
                         console.log('https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + price + '&open_now=true&radius=10000');
-
+                        // window.location.href = "businessPage.html";
                         // clear the body
-                        $("#the-body").empty();
+                        // $("#the-body").empty();
 
                         // Will need another API call for the the business hours
                         // https://www.yelp.com/developers/documentation/v3/business
 
-                        fill_div(response);
+                        // fill_div(response);
                         
 
                     })
@@ -172,15 +175,28 @@ function fill_div(response){
     );
 
 }
-function myMap() {
-    var mapProp= {
-      center:new google.maps.LatLng(lat,lon),
-      zoom:5,
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    var marker = new google.maps.Marker({position: mapProp.center});
-    
-    marker.setMap(map);
+
+function saveData(response){
+    localStorage.setItem("businessImage", `${response.businesses[0].image_url}`);
+    localStorage.setItem("businessCusine", `${response.businesses[0].categories[0].title}`);
+    localStorage.setItem("businessPrice", `${response.businesses[0].price}`);
+    localStorage.setItem("businessRating", `${response.businesses[0].rating}`);
+    localStorage.setItem("businessLocation", `${response.businesses[0].location.address1}, 
+                        ${response.businesses[0].location.city}, 
+                        ${response.businesses[0].location.state} 
+                        ${response.businesses[0].location.zip_code}`);
+    localStorage.setItem("businessPhone", `${response.businesses[0].display_phone}`);
 }
+
+// function myMap() {
+//     var mapProp= {
+//       center:new google.maps.LatLng(lat,lon),
+//       zoom:5,
+//     };
+//     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+//     var marker = new google.maps.Marker({position: mapProp.center});
+    
+//     marker.setMap(map);
+// }
 
 
