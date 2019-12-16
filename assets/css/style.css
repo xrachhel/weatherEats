@@ -19,44 +19,35 @@ body{
     min-height: 100%;
 }
 
-* {
-    margin: 0 auto;
-    padding: 0;
-    max-width: 100%;
-  }
+* { box-sizing: border-box; }
 
-  .grid {
-    text-align: center;
-    max-width: 95vw;
-    margin: 2.5vw auto;
-  }
+/* force scrollbar, prevents initial gap */
+html { overflow-y: scroll; }
 
-  .grid-item {
-    padding: 5px;
-    box-sizing: border-box;
-      display:inline;
-  }
+body { font-family: sans-serif; }
 
-  @media screen and (min-width: 500px) {
-    .grid-item {
-      width: 50%;
-    }
-  }
-  
-  @media screen and (min-width: 1000px) {
-    .grid-item {
-      width: 33.333%;
-    }
-  }
-  
-  @media screen and (min-width: 1700px) {
-    .grid-item {
-      width: 25%;
-    }
-  }
-  
-  @media screen and (min-width: 2100px) {
-    .grid-item {
-      width: 20%;
-    }
-  }
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .element-item ---- */
+
+/* 5 columns, percentage width */
+.grid-sizer,
+.grid-item {
+  width: 33.3%;
+}
+
+.grid-item {
+  float: left;
+  height: 250px;
+  padding: 4px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}

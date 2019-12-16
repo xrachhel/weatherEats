@@ -19,17 +19,18 @@
         </div>
     </section>
     <br>
-
-    <div class="grid"></div>
+    <div class="grid">
+        <div class="grid-sizer"></div>
+    </div>
 
 <script src="assets/js/jQuery3.4.1.js"></script>
-<script src="assets/js/masonry.pkgd.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="assets/js/packery.pkgd.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script>
     $("#body").attr("style","background-image: none");
     var grid = $(".grid");
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=puppies&limit=20&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=basketball&limit=20&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
 
     $.ajax({
       url: queryURL,
@@ -39,6 +40,7 @@
       var grid = $(".grid");
 
       var gifs = response.data
+
       for (var i =0; i < gifs.length; i++){
         var gridItem = $("<div>");
         gridItem.addClass("grid-item");
@@ -47,18 +49,19 @@
         var image = $("<img>");
         image.attr("src", gifs[i].images.original.url)
         gridItem.append(image);
-        
-
-        console.log(gifs[i].images.original.url);
       }
     });
     
+    var $grid =     $('.grid').packery({
+                        itemSelector: '.grid-item',
+                        columnWidth: '.grid-sizer',
+                        percentPosition: true
+                    });
 
-    grid.imagesLoaded(function() {
-        grid.masonry({
-        itemSelector: ".grid-item"
-        });
+    $grid.imagesLoaded().progress( function() {
+    $grid.packery();
     });
+
 </script>
 </body>
 </html>
