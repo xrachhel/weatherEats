@@ -56,12 +56,12 @@ This portion of the script file displays how the weather and the filters affect 
 
 **Oren Amema**
 * [Github](https://github.com/orenamema)
-* [LinkedIn] (https://www.linkedin.com/in/oren-amematekpo-b7a12b13)
+* [LinkedIn](https://www.linkedin.com/in/oren-amematekpo-b7a12b13)
 
 **Rachel Yeung**
 
 * [Github](https://github.com/xrachhel)
-* [LinkedIn] (https://www.linkedin.com/in/rachel-yeung-814986159/)
+* [LinkedIn](https://www.linkedin.com/in/rachel-yeung-814986159/)
 
 **Yalí Miranda** 
 
