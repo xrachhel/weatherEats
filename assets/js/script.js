@@ -132,117 +132,100 @@ function renderWeather() {
                         console.log(result)
                         runPackery(result.businesses);
 
-                        for (var i = 0; i < result.businesses.length; i ++){
-                            var id = result.businesses[i].id
-                            console.log(id)
-//--------------------------------YELP hours of operation ajax call-------------------------------------
-                            $.ajax({
-                                url: "https://api.yelp.com/v3/businesses/" + id,
-                                method: "GET", 
-                                headers: {
-                                    authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
-                                }
-                            }).then(function(response){
-                                console.log(response)
-                                var restName = result.businesses[0].name
-                                var prices = result.businesses[0].price
-                                var ratings = result.businesses[0].rating
-                                var address = result.businesses[0].location.display_address[0]
-                                var address2 = result.businesses[0].location.display_address[1]
-                                var phone = result.businesses[0].display_phone
-                                // var sunday = response.hours[0].open[0].start
-                                // var sunday1 = response.hours[0].open[0].end
-                                for(var i = 0; i < response.hours[0].open.length; i++){
-                                    // var hours = response.hours[0].open[i].start
-                                    // var hourDiv = $("<div>" + hours + "</div>")
-                                    // $("#hours").append(hourDiv)
-                                    // $("#hours").text("Hours: " + hours)
-                                    // console.log(hours)
-                                    var day = response.hours[0].open[i].day
-                                    console.log(day)
-                                    var dayWeek;
-                                    if ( day === 0){
-                                        dayWeek = "Sunday"
-                                    }
-                                    else if( day === 1){
-                                        dayWeek = "Monday"
-                                    }
-                                    else if (day === 2){
-                                        dayWeek = "Tuesday"
-                                    }
-                                    else if (day === 3){
-                                        dayWeek = "Wednesday"
-                                    }
-                                    else if (day === 4){
-                                        dayWeek = "Thursday"
-                                    }
-                                    else if (day === 5){
-                                        dayWeek = "Friday"
-                                    }
-                                    else if (day === 6){
-                                        dayWeek = "Saturday"
-                                    }
-                                    if(response.hours[0].open[i] === response.hours[0].open[i+1]){
-                                        var start = response.hours[0].open[i].start
-                                        var end = response.hours[0].open[i].end
-                                        var start1 = response.hours[0].open[i+1].start
-                                        var end1 = response.hours[0].open[i+1].start
-                                        var hourDiv = $("<div>" + dayWeek +": " + start + "-" + end + "</div>")
-                                        var hoursDiv = $("<div>" + start1 + "-" + end1 + "</div" )
-                                        console.log(start,end,start1,end1)
-                                        $("#hours").append(hourDiv, hoursDiv)
-                                    }
-                                    else{
-                                        var start = response.hours[0].open[i].start
-                                        var end = response.hours[0].open[i].end
-                                        var hourDiv = $("<div>" +dayWeek + ": " + start + "-" + end + "</div>")
-                                        $("#hours").append(hourDiv)
-                                        console.log(start,end)
-                                    }
+                        // for (var i = 0; i < result.businesses.length; i ++){
+                        //     var id = result.businesses[i].id
+                        //     console.log(id)
+                        //     //--------------------------------YELP hours of operation ajax call-------------------------------------
+                        //     $.ajax({
+                        //         url: "https://api.yelp.com/v3/businesses/" + id,
+                        //         method: "GET", 
+                        //         headers: {
+                        //             authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
+                        //         }
+                        //     }).then(function(response){
+                        //         console.log(response)
+                        //         var restName = result.businesses[0].name
+                        //         var prices = result.businesses[0].price
+                        //         var ratings = result.businesses[0].rating
+                        //         var address = result.businesses[0].location.display_address[0]
+                        //         var address2 = result.businesses[0].location.display_address[1]
+                        //         var phone = result.businesses[0].display_phone
+                        //         // var sunday = response.hours[0].open[0].start
+                        //         // var sunday1 = response.hours[0].open[0].end
+                        //         for(var i = 0; i < response.hours[0].open.length; i++){
+                        //             // var hours = response.hours[0].open[i].start
+                        //             // var hourDiv = $("<div>" + hours + "</div>")
+                        //             // $("#hours").append(hourDiv)
+                        //             // $("#hours").text("Hours: " + hours)
+                        //             // console.log(hours)
+                        //             var day = response.hours[0].open[i].day
+                        //             console.log(day)
+                        //             var dayWeek;
+                        //             if ( day === 0){
+                        //                 dayWeek = "Sunday"
+                        //             }
+                        //             else if( day === 1){
+                        //                 dayWeek = "Monday"
+                        //             }
+                        //             else if (day === 2){
+                        //                 dayWeek = "Tuesday"
+                        //             }
+                        //             else if (day === 3){
+                        //                 dayWeek = "Wednesday"
+                        //             }
+                        //             else if (day === 4){
+                        //                 dayWeek = "Thursday"
+                        //             }
+                        //             else if (day === 5){
+                        //                 dayWeek = "Friday"
+                        //             }
+                        //             else if (day === 6){
+                        //                 dayWeek = "Saturday"
+                        //             }
+                        //             if(response.hours[0].open[i] === response.hours[0].open[i+1]){
+                        //                 var start = response.hours[0].open[i].start
+                        //                 var end = response.hours[0].open[i].end
+                        //                 var start1 = response.hours[0].open[i+1].start
+                        //                 var end1 = response.hours[0].open[i+1].start
+                        //                 var hourDiv = $("<div>" + dayWeek +": " + start + "-" + end + "</div>")
+                        //                 var hoursDiv = $("<div>" + start1 + "-" + end1 + "</div" )
+                        //                 console.log(start,end,start1,end1)
+                        //                 $("#hours").append(hourDiv, hoursDiv)
+                        //             }
+                        //             else{
+                        //                 var start = response.hours[0].open[i].start
+                        //                 var end = response.hours[0].open[i].end
+                        //                 var hourDiv = $("<div>" +dayWeek + ": " + start + "-" + end + "</div>")
+                        //                 $("#hours").append(hourDiv)
+                        //                 console.log(start,end)
+                        //             }
                             
-                                }
+                        //         }
                                 
 
-                                $("#restaurantName").text(restName)
-                                console.log(restName)
-                                // $("#cuisine").text(response[0].categories[0].alias)
-                                // console.log(response.categories[0].alias)
-                                $("#price").html("<strong>Price: </strong>" + prices)
-                                console.log(prices)
-                                $("#rating").html("<strong>Rating: </strong>" + ratings + "/5")
-                                console.log(ratings)
-                                $("#location").html("<strong>Address: </strong>" + address + ", " +  address2)
-                                console.log(address + address2)
-                                $("#phone").html("<strong>Phone no.: </strong>" + phone)
-                                console.log(phone)
-                                var img = $("<img>")
-                                img.attr("src", result.businesses[0].image_url)
-                                img.attr("style", "height: 150px; width: 150px; position: absolute; right: 30px;")
-                                $("#img").append(img)
-                                // var sundayDiv = $("<div>" + sunday + "- " + sunday1 + "</div>")
-                                // $("#hours").append(sundayDiv)
-                                // console.log(sunday + sunday1)
+                        //         $("#restaurantName").text(restName)
+                        //         console.log(restName)
+                        //         // $("#cuisine").text(response[0].categories[0].alias)
+                        //         // console.log(response.categories[0].alias)
+                        //         $("#price").html("<strong>Price: </strong>" + prices)
+                        //         console.log(prices)
+                        //         $("#rating").html("<strong>Rating: </strong>" + ratings + "/5")
+                        //         console.log(ratings)
+                        //         $("#location").html("<strong>Address: </strong>" + address + ", " +  address2)
+                        //         console.log(address + address2)
+                        //         $("#phone").html("<strong>Phone no.: </strong>" + phone)
+                        //         console.log(phone)
+                        //         var img = $("<img>")
+                        //         img.attr("src", result.businesses[0].image_url)
+                        //         img.attr("style", "height: 150px; width: 150px; position: absolute; right: 30px;")
+                        //         $("#img").append(img)
+                        //         // var sundayDiv = $("<div>" + sunday + "- " + sunday1 + "</div>")
+                        //         // $("#hours").append(sundayDiv)
+                        //         // console.log(sunday + sunday1)
                                 
-                            })
-                        }
+                        //     })
+                        // }
                         
-                        
-
-
-         
-                        // $.ajax({
-                        //     url: "https://api.yelp.com/v3/businesses/" + id,
-                        //     method: "GET", 
-                        //     headers: {
-                        //         authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
-                        //     }
-                        // }).then(function(response){
-                        //     console.log(response)
-                        // })
-
-
-
-
 
                     })
 
@@ -265,10 +248,15 @@ function runPackery(arr){
         var image = $("<img>");
         image.attr("src", arr[i].image_url)
         image.addClass("restaurant-img");
+        image.attr("id", arr[i].id);
         gridItem.append(image);
         var testDiv = $("<p>");
         testDiv.text("fkljsdlfkjsdlkfjalfsdflskjdf");
         grid.append(testDiv);
+        $("#"+arr[i].id).click(function() {
+            showModal(this.id); 
+        });
+        
     }
 
     var $grid =     $('.grid').packery({
@@ -285,9 +273,34 @@ function runPackery(arr){
 renderWeather();
 
 
-$("#showModal").click(function() {
-    $(".modal").addClass("is-active");  
-  });
+function showModal(id){
+    $.ajax({
+        url: "https://api.yelp.com/v3/businesses/" + id,
+        method: "GET", 
+        headers: {
+            authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
+        }
+    }).then(function(response){ 
+            // console.log(response); 
+            localStorage.setItem("businessData", JSON.stringify(response));
+            $(".modal").addClass("is-active");
+            // console.log(JSON.parse(localStorage.getItem("businessData")));
+            window.open("businessPage.html", '_blank');
+            // $("#modal-content").append(`<iframe src="https://www.w3schools.com/"></iframe>`);
+            // var start = response.hours[0].open[i].start;
+            // var end = response.hours[0].open[i].end;
+            // var start1 = response.hours[0].open[i+1].start;
+            // var end1 = response.hours[0].open[i+1].start;
+            // var hourDiv = $("<div>" + dayWeek +": " + start + "-" + end + "</div>");
+            // var hoursDiv = $("<div>" + start1 + "-" + end1 + "</div" );  
+    });  
+}
+
+
+
+// $("#showModal").click(function() {
+//     $(".modal").addClass("is-active");  
+//   });
   
   $(".modal-close").click(function() {
      $(".modal").removeClass("is-active");
