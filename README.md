@@ -61,4 +61,4 @@ This portion of the script file displays how the weather and the filters affect 
 **Yalí Miranda** 
 
 * [Github](https://github.com/yjmiranda)
-* [LinkedIn](https://www.linkedin.com/in/yal%C3%AD-miranda-8b4b94199/)# weatherEats
+* [LinkedIn](https://www.linkedin.com/in/yal%C3%AD-miranda-8b4b94199/)
