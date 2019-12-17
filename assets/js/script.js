@@ -123,7 +123,7 @@ function renderWeather() {
                     console.log(category)
 
                     $.ajax({
-                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + price + '&open_now=true&categories=' + category + '&radius=10000&limit=10',
+                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + price + '&open_now=true&categories=' + category + '&radius=10000&limit=12',
                         method: "GET",
                         headers: {
                             authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
@@ -250,9 +250,6 @@ function runPackery(arr){
         image.addClass("restaurant-img");
         image.attr("id", arr[i].id);
         gridItem.append(image);
-        var testDiv = $("<p>");
-        testDiv.text("fkljsdlfkjsdlkfjalfsdflskjdf");
-        grid.append(testDiv);
         $("#"+arr[i].id).click(function() {
             showModal(this.id); 
         });
@@ -260,9 +257,7 @@ function runPackery(arr){
     }
 
     var $grid =     $('.grid').packery({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
+        itemSelector: '.grid-item'
     });
 
     $grid.imagesLoaded().progress( function() {
