@@ -22,7 +22,7 @@ Once the user has selected the filters, they may then press the Find Restaurants
 
 ## Deployed Link
 
-* [](https://xrachhel.github.io/weatherEats/)
+* [weatherEats](https://xrachhel.github.io/weatherEats/)
 
 ## Code Snipet
 
@@ -55,11 +55,13 @@ This portion of the script file displays how the weather and the filters affect 
 ## Authors
 
 **Oren Amema**
+* [Github](https://github.com/orenamema)
+* [LinkedIn](https://www.linkedin.com/in/oren-amematekpo-b7a12b13)
 
 **Rachel Yeung**
 
 * [Github](https://github.com/xrachhel)
-* [LinkedIn] (https://www.linkedin.com/in/rachel-yeung-814986159/)
+* [LinkedIn](https://www.linkedin.com/in/rachel-yeung-814986159/)
 
 **Yalí Miranda** 
 
