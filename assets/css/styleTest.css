@@ -1,0 +1,64 @@
+html{
+    height: 100%;
+}
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:30px;
+    height:30px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #555;
+}
+input[type='checkbox']:checked {
+    background: black;
+}
+
+body{
+    background-image: url("../images/food-salad-healthy-vegetables.jpg");
+    background-size: cover;
+    min-height: 100%;
+}
+
+.modalContainer{
+    background-color: white;
+    padding: 30px;
+    width:800px;
+    height:600px;    
+}
+
+.iframe{
+    width:100%;
+    height:100%; 
+
+}
+
+html { overflow-y: scroll; }
+
+.grid{
+    padding-left: 25px;
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-item {
+  float: left;
+  width: 24vw;
+  height: 24vw;
+  padding: 2px;
+}
+
+ .restaurant-img{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 598px){
+    .grid-item{
+        width: 47vw;
+        height: 47vw;
+    }
+}

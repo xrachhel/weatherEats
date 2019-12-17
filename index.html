@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Eats</title>
+    <link rel="stylesheet" href="assets/css/resetTest.css">
+    <link rel="stylesheet" href="assets/css/bulmaTest.css">
+    <link rel="stylesheet" href="./assets/css/styleTest.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body id="body">
+    <section class="hero has-background-danger">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-size-1 has-text-white">Weather Eats <span class="icon"><i class="fas fa-stroopwafel"></i></span></h1>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="columns">
+        <div class="column is-6 is-offset-3 box has-text-centered" id="weather-content">
+        </div>
+    </section>
+    <br>
+    <section class="container box has-background-danger has-text-white" id="filter-div">
+        <h2 class="has-text-centered has-text-weight-bold is-size-3">Choose Your Filters</h2>
+        <br>
+        <div class="columns">
+            <div class="column is-2 is-offset-3">
+                <input id="family" type="checkbox">
+                <label for="family" class="checkbox is-size-4 has has-text-centered">
+                    Family
+                </label>
+            </div>
+            <div class="column is-2">
+                <input id="budget" type="checkbox">
+                <label for="budget" class="checkbox is-size-4 has has-text-centered">
+                    Budget
+                </label>
+            </div>
+            <div class="column is-2">
+                <input id="business" type="checkbox">
+                <label for="business" class="checkbox is-size-4 has has-text-centered">
+                    Business
+                </label>
+            </div>
+        </div>
+    </section>
+    <br>
+    <div class="columns" id="find-restaurants-div">
+        <div class="column is-6 is-offset-3">
+            <button id = "restaurants" class="button has-background-white has-text-danger has-text-weight-bold is-large is-fullwidth is-size-1">Find Restaurants</button>
+        </div>
+    </div>
+    
+    <div class="grid">
+        <div class="grid-sizer"></div>
+    </div>
+    <!-- <div class="container" id="app">
+            <div class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <div class="container modalContainer" id="modal-content">
+                    <h1 id="restaurantName" class="title is-size-2"></h1>
+                    <p id="img"></p>
+                    <p id="cuisine"></p>
+                    <p id="price"></p>
+                    <p id="rating"></p>
+                    <p id="location"></p>
+                    <p id="phone"></p>
+                    <p id="hours" ><strong>Hours:</strong> </p>
+                    <iframe src="businessPage.html"></iframe>
+                </div>
+              </div>
+              <button class="modal-close"></button>
+            </div>
+          </div> -->
+
+    <script src="assets/js/jQuery3.4.1.js"></script>
+    <script src="assets/js/packery.pkgd.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
