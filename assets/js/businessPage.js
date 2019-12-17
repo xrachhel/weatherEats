@@ -31,13 +31,67 @@ function change(){
     $("#ratingP").text(`${businessRating}/5`);
     $("#locationP").text(`${businessLocation}`);
     $("#phoneP").text(`${businessPhone}`);
-    $("#mondayP").text(`${data.hours[0].open[0].start} - ${data.hours[0].open[0].end}`);
-    $("#tuesdayP").text(`${data.hours[0].open[1].start} - ${data.hours[0].open[1].end}`);
-    $("#wednesdayP").text(`${data.hours[0].open[2].start} - ${data.hours[0].open[2].end}`);
-    $("#thursdayP").text(`${data.hours[0].open[3].start} - ${data.hours[0].open[3].end}`);
-    $("#fridayP").text(`${data.hours[0].open[4].start} - ${data.hours[0].open[4].end}`);
-    $("#saturdayP").text(`${data.hours[0].open[5].start} - ${data.hours[0].open[5].end}`);
-    $("#sundayP").text(`${data.hours[0].open[6].start} - ${data.hours[0].open[6].end}`);
+    // $("#mondayP").text(`${data.hours[0].open[0].start} - ${data.hours[0].open[0].end}`);
+    // $("#tuesdayP").text(`${data.hours[0].open[1].start} - ${data.hours[0].open[1].end}`);
+    // $("#wednesdayP").text(`${data.hours[0].open[2].start} - ${data.hours[0].open[2].end}`);
+    // $("#thursdayP").text(`${data.hours[0].open[3].start} - ${data.hours[0].open[3].end}`);
+    // $("#fridayP").text(`${data.hours[0].open[4].start} - ${data.hours[0].open[4].end}`);
+    // $("#saturdayP").text(`${data.hours[0].open[5].start} - ${data.hours[0].open[5].end}`);
+    // $("#sundayP").text(`${data.hours[0].open[6].start} - ${data.hours[0].open[6].end}`);
+
+    for(var i = 0; i < data.hours[0].open.length; i++){
+      //             // var hours = response.hours[0].open[i].start
+      //             // var hourDiv = $("<div>" + hours + "</div>")
+      //             // $("#hours").append(hourDiv)
+      //             // $("#hours").text("Hours: " + hours)
+      //             // console.log(hours)
+                  var day = data.hours[0].open[i].day
+                  console.log(day)
+                  var dayWeek;
+                  if ( day === 0){
+                      dayWeek = "Sunday"
+                  }
+                  else if( day === 1){
+                      dayWeek = "Monday"
+                  }
+                  else if (day === 2){
+                      dayWeek = "Tuesday"
+                  }
+                  else if (day === 3){
+                      dayWeek = "Wednesday"
+                  }
+                  else if (day === 4){
+                      dayWeek = "Thursday"
+                  }
+                  else if (day === 5){
+                      dayWeek = "Friday"
+                  }
+                  else if (day === 6){
+                      dayWeek = "Saturday"
+                  }
+                  if(data.hours[0].open[i] === data.hours[0].open[i+1]){
+                      var start = data.hours[0].open[i].start
+                      var end = data.hours[0].open[i].end
+                      var start1 = data.hours[0].open[i+1].start
+                      var end1 = data.hours[0].open[i+1].start
+                      var hourDiv = $("<div>" + dayWeek +": " + start + "-" + end + "," + start1 + "-" + end1 + "</div>")
+                      var hoursDiv = $("<div>       " + start1 + "-" + end1 + "</div" )
+                      console.log(start,end,start1,end1)
+                      $("#hours").append(hourDiv)
+                    console.log("hello")
+                      $("#hours").append(hoursDiv)
+                  }
+                  else{
+                    
+                      var start = data.hours[0].open[i].start
+                      var end = data.hours[0].open[i].end
+                      var hourDiv = $("<div>" +dayWeek + ": " + start + "-" + end + "</div>")
+                      $("#hours").append(hourDiv)
+                      console.log(start,end)
+                      console.log("hello")
+                  }
+          
+              }
 }
 change();
 // update map

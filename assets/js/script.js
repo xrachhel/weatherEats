@@ -123,7 +123,8 @@ function renderWeather() {
                     console.log(category)
 
                     $.ajax({
-                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + price + '&open_now=true&categories=' + category + '&radius=10000&limit=12',
+                        url: 'https://api.yelp.com/v3/businesses/search?term=' + type + '&longitude=' + lon + '&latitude=' + lat + '&price=' + 
+                        price + '&open_now=true&categories=' + category + '&radius=10000&limit=12',
                         method: "GET",
                         headers: {
                             authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
@@ -276,18 +277,12 @@ function showModal(id){
             authorization: "Bearer CyZO8Ys8yDQ-FCnqNZegGIU2FvGwOLg00MP1JtA6GLKWM2SadzcHyCA4KMt9Y9643sXFsA2bhvDY4RKLyydvPULurteiMPQKydq62F92eEKefWJnbuOanTUtAtjzXXYx"
         }
     }).then(function(response){ 
-            // console.log(response); 
+            console.log(response)
             localStorage.setItem("businessData", JSON.stringify(response));
             $(".modal").addClass("is-active");
-            // console.log(JSON.parse(localStorage.getItem("businessData")));
+           
             window.open("businessPage.html", '_blank');
-            // $("#modal-content").append(`<iframe src="https://www.w3schools.com/"></iframe>`);
-            // var start = response.hours[0].open[i].start;
-            // var end = response.hours[0].open[i].end;
-            // var start1 = response.hours[0].open[i+1].start;
-            // var end1 = response.hours[0].open[i+1].start;
-            // var hourDiv = $("<div>" + dayWeek +": " + start + "-" + end + "</div>");
-            // var hoursDiv = $("<div>" + start1 + "-" + end1 + "</div" );  
+            
     });  
 }
 
