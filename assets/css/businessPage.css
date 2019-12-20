@@ -1,7 +1,23 @@
-#business-image, #googleMap, #imageDiv{
+#business-image{
     width: 200px;
     height: 200px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 10px;
+}
+
+/*#business-image, #googleMap, #imageDiv{
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}*/
+
+#googleMap, #imageDiv{
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: 8%;
     border-radius: 10px;
 }
